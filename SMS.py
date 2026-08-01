@@ -51,6 +51,18 @@ class StudentManagement:
                 return
         print("No student found with that roll number!")
 
+    def student_update_marks(self,roll,newmarks):
+        for student in self.students:
+            if roll == student.roll:
+                student.display_details()          
+                student.update_marks(newmarks)
+                print("CHANGED DETAILS:")
+                student.display_details()
+                return
+        print("No student found with that roll no.")
+        
+
+
 
 #remove the testing portion if you dont want to test the Student Management List
 
@@ -100,6 +112,11 @@ while True:
         management.remove_student(roll)
     elif choice == "5":
         break
+    elif choice == "6":
+        roll = int(input("Enter the roll no. of the student:"))
+        newmarks = int(input("Enter the new marks:"))
+        management.student_update_marks(roll,newmarks)
+
     else:
         print("Invalid menu choice! Please try again")
         
